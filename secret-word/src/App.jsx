@@ -19,11 +19,19 @@ function App() {
     setStage(stages[1].name);
   };
 
+  const verifyLetter = () => {
+    setStage(stages[2].name);
+  };
+
+  const restartGame = () => {
+    setStage(stages[0].name);
+  };
+
   return (
     <div className="App">
       {stage === 'start' && <StartScreen handleStartGame={handleStartGame} />}
-      {stage === 'game' && <Game />}
-      {stage === 'end' && <GameOver />}
+      {stage === 'game' && <Game verifyLetter={verifyLetter} />}
+      {stage === 'end' && <GameOver restartGame={restartGame} />}
       {console.log(words)}
     </div>
   );
