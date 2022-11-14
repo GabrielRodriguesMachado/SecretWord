@@ -36,6 +36,7 @@ function App() {
     setWord(randomWord);
     setWordCategory(randomCategory);
     setWordLetters(getWordLetters);
+    console.log(word, wordCategory, wordLetters);
 
     setStage(stages[1].name);
   };
