@@ -1,23 +1,42 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import PropTypes from 'prop-types';
+import {
+  func, string, array, number,
+} from 'prop-types';
 import './Game.css';
 
-function Game({ verifyLetter }) {
+function Game({
+  verifyLetter, word, wordLetters, wordCategory, guessedLetters, wrongLetters, guesses, points,
+}) {
   return (
     <div className="game">
+      {console.log(word, wordLetters, guessedLetters, wrongLetters)}
       <p className="points">
-        <span>Pontuação 000</span>
+        <span>
+          Pontuação:
+          {' '}
+          {points}
+        </span>
       </p>
       <h1>Advinhe a palavra:</h1>
       <h3 className="tip">
         dica sobre a palavra:
         {' '}
-        <span>categoria</span>
+        <span>{wordCategory}</span>
       </h3>
+      <p>
+        Você ainda tem
+        {' '}
+        {guesses}
+        {' '}
+        tentativas
+      </p>
       <div className="wordContainer">
-        <span className="letter">A</span>
-        <span className="blankSquare">x</span>
+        {wordLetters.map((letter) => (
+          guessedLetters.includes(letter)
+            ? <span className="letter" key={letter}>{letter}</span>
+            : <span className="blankSquare" key={letter} />
+        ))}
       </div>
       <div className="letterContainer">
         <p>Tente advinhar uma letra da palavra:</p>
@@ -28,15 +47,24 @@ function Game({ verifyLetter }) {
       </div>
       <div className="wrongLettersContainer">
         <p>Letras já utilizadas</p>
-        <span>a,</span>
-        <span>b,</span>
+        {wrongLetters.map((letter) => (
+          <span className="wrongLetter" key={letter}>{letter}</span>
+        ))}
       </div>
     </div>
   );
 }
 
 Game.propTypes = {
-  verifyLetter: PropTypes.func.isRequired,
-};
+  verifyLetter: func,
+  word: string,
+  wordLetters: array,
+  wordCategory: string,
+  guessedLetters: array,
+  wrongLetters: array,
+  guesses: number,
+  points: number,
+
+}.isrequired;
 
 export default Game;

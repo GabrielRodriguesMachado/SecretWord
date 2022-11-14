@@ -1,4 +1,4 @@
-const words = {
+const wordsList = {
   carro: ['Motor', 'Rodas', 'Portas', 'Pneus'],
   fruta: ['Maçã', 'Banana', 'Uva', 'Morango'],
   animal: ['Cachorro', 'Gato', 'Papagaio', 'Pato'],
@@ -8,4 +8,4 @@ const words = {
   esporte: ['Futebol', 'Basquete', 'Vôlei', 'Tênis'],
 };
 
-export default words;
+export default wordsList;
